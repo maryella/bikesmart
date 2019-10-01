@@ -8,46 +8,82 @@ function get(url){
           })
 }
 
-const citySelectorForm = document.querySelector("#citySelectorForm")
+const inputForm = document.querySelector("#inputForm")
+const formButton = inputForm.querySelector("#formButton")
+const infoHolder = document.querySelector("#infoHolder")
 
+// formButton.addEventListener("click", function(event){
+//     event.preventDefault();
+//     const cityName = cityForm.querySelector("#city").value;
+//     printWeather(cityName);
+// })
 
-citySelectorForm.addEventListener("submit", function(event){
-    event.preventDefault();
-    const categoryValue = citySelectorForm.querySelector("select").value;
-    updateCity(categoryValue);
-})
+function addIncidentCategoryDropDown(categoryArray){
+  const categoryList = document.createElement("select");
+  const selectWrapper = document.querySelector("#selectWrapper")
+  
+  categoryArray.forEach(function(item){
+    const categoryOption = document.createElement("option")
+    categoryOption.text = item;
+    categoryOption.value = item;
+    categoryList.append(categoryOption)
+  })
+  selectWrapper.append(categoryList)
+}
 
-function updateCity(cityName){
-  const cityInfoDisplay = document.querySelector("cityInfo")
-  const getCityName = cityName.toLowerCase()
-  const cityInfo = get(`https://api.teleport.org/api/urban_areas/slug:${getCityName}/details/`)
-    cityInfo.then(function(data){
-      console.log(data.categories[1]["data"])
-    })
+function getTitle(response){
+  const title = document.createElement("h4")
+  const titleInfo = response.features[i]['properties']['title']
+  title.innerText = titleInfo
+  title.setAttribute("class", "title")
+  
+  return title
+  
+}
+
+function getDescription(response){
+  const description = document.createElement("p")
+  description.setAttribute("class", "description")
+  
+  const descriptionInfo = response.features[i]['properties']['description']
+  description.innerHTML = descriptionInfo
+
+  
+}
+
+function getCoords(response){
+  const coords = response.features[i]['geometry']['coordinates']
+  console.log(coords)
 }
 
 
-function getCategories(){
-    const categoryList = document.createElement("select");
-    const selectWrapper = document.querySelector("#selectWrapper")
-    get(`https://api.teleport.org/api/urban_areas/`)
+function getIncidentInfo(location, radius){ //may add incident type later
+    
+    get(`https://bikewise.org:443/api/v2/locations/markers?proximity=${location}&proximity_square=${radius}`)
         .then(function(response){
-          for (i = 0; i < response._links['ua:item'].length; i++) {
-            //  console.log(response._links['ua:item'][i].name)
-              const categoryOption = document.createElement("option")
-              categoryOption.text = response._links['ua:item'][i].name;
-              categoryOption.value = response._links['ua:item'][i].name;
-              categoryList.append(categoryOption)
-
-            }
+        //     console.log(response.features['0'])
+          for (i = 0; i < response.features.length; i++) {
+            const incidentInfo = document.createElement("div")
+            const title = getTitle(response)
+            incidentInfo.append(title)
+            const description = getDescription(response)
+            incidentInfo.append(description)
+      
+            infoHolder.append(incidentInfo)
+            getCoords(response)
+          }
+          
         })
-    selectWrapper.append(categoryList)
+  
     }
 
+const incidentCategories = ["crash", "hazard", "theft", "unconfirmed", "infrastructure_issue",   "chop_shop"]
+getIncidentInfo("Atlanta", 10)
 
+addIncidentCategoryDropDown(incidentCategories)
 //create IMMEDIATELY INVOKED FUNCTION EXPRESSION (IIFE)
-(function(){
-    getCategories();
-})()
+// (function(){
+    
+// })()
 
 // console.log(get("https://api.teleport.org/api/urban_areas/"))
