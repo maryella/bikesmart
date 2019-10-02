@@ -14,8 +14,9 @@ const infoHolder = document.querySelector("#infoHolder")
 
 formButton.addEventListener("click", function(event){
     event.preventDefault();
-    const cityName = cityForm.querySelector("#city").value;
-    printWeather(cityName);
+    const inputLocation = inputForm.querySelector("#location").value;
+    const inputRadius = inputForm.querySelector("#radius").value;
+    getIncidentInfo(inputLocation, inputRadius);
 })
 
 //Make category drop down - not in use yet
@@ -31,6 +32,7 @@ formButton.addEventListener("click", function(event){
 //   })
 //   selectWrapper.append(categoryList)
 // }
+// const incidentCategories = ["crash", "hazard", "theft", "unconfirmed", "infrastructure_issue",   "chop_shop"]
 
 //function to get different element for each incident
 function getTitle(response){
@@ -129,8 +131,8 @@ function handleLocationError(browserHasGeolocation, infoWindow, pos) {
 }
 
 function getIncidentInfo(location, radius){ //may add incident type later
-    
-    get(`https://bikewise.org:443/api/v2/locations/markers?proximity=${location}&proximity_square=${radius}`)
+    infoHolder.innerHTML = ""
+    get(`https://bikewise.org:443/api/v2/locations/markers?proximity=${location}&proximity_square=${radius}&all=false`)
         .then(function(response){
         //for loop to iterate through the items
           for (i = 0; i < response.features.length; i++) {
@@ -162,8 +164,8 @@ function getIncidentInfo(location, radius){ //may add incident type later
   
     }
 
-const incidentCategories = ["crash", "hazard", "theft", "unconfirmed", "infrastructure_issue",   "chop_shop"]
-getIncidentInfo("Atlanta", 10)
+
+
 
 
 
