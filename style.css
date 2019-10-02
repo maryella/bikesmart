@@ -8,3 +8,13 @@
     width: 100px;
 
 }
+
+#map {
+    height: 100%;
+  }
+  /* Optional: Makes the sample page fill the window. */
+  #map {
+	display: table;
+	width: 50vw;
+	height: 50vh;
+}

@@ -51,52 +51,29 @@ function getDescription(response){
   
 }
 
-/*** The  MaryEll Code *
+
 
 function getCoords(response){
   const coords = response.features[i]['geometry']['coordinates']
   return coords
 }
 
-
-function getIncidentInfo(location, radius){ //may add incident type later
-    
-    get(`https://bikewise.org:443/api/v2/locations/markers?proximity=${location}&proximity_square=${radius}`)
-        .then(function(response){
-        //for loop to iterate through the items
-          for (i = 0; i < response.features.length; i++) {
-            //create div to hold info for each incident
-            const incidentInfo = document.createElement("div")
-
-            //create each element and add it to info div
-            const title = getTitle(response)
-            incidentInfo.append(title)
-            const description = getDescription(response)
-            incidentInfo.append(description)
-      
-            //add incident info div to page
-            infoHolder.append(incidentInfo)
-
-            //call coords function - hopefull to use for mapping function
-            coords = getCoords(response)
-          }
-          
-        })
-  
-    }
-
-const incidentCategories = ["crash", "hazard", "theft", "unconfirmed", "infrastructure_issue",   "chop_shop"]
-getIncidentInfo("Atlanta", 10)
-
-/************************************ Mulk's Code  ****************************************************************************************************/
-
+function createMarker(response){
+  let marker;
+  coords = response.features[i]['geometry']['coordinates'];
+  console.log(coords[0], coords[1])
+  marker = new google.maps.Marker({
+      position: new google.maps.LatLng(coords[1], coords[0]),
+      map: map
+  });
+  marker.setMap(map);
+}
 if (navigator.geolocation) {
   navigator.geolocation.getCurrentPosition(function (position) {
       initialLocation = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
       map.setCenter(initialLocation);
   });
 }
-
 
 function initMap() {
   var myLatLng = {lat:  33.7490, lng:-84.3880 };
@@ -133,16 +110,43 @@ function handleLocationError(browserHasGeolocation, infoWindow, pos) {
   infoWindow.open(map);
 }
 
-function createMarker(response){
-  let marker;
-  coords = response.features[i]['geometry']['coordinates'];
-  console.log(coords[0], coords[1])
-  marker = new google.maps.Marker({
-      position: new google.maps.LatLng(coords[1], coords[0]),
-      map: map
-  });
-  marker.setMap(map);
-}
+function getIncidentInfo(location, radius){ //may add incident type later
+    
+    get(`https://bikewise.org:443/api/v2/locations/markers?proximity=${location}&proximity_square=${radius}`)
+        .then(function(response){
+        //for loop to iterate through the items
+          for (i = 0; i < response.features.length; i++) {
+            //create div to hold info for each incident
+            const incidentInfo = document.createElement("div")
+
+            //create each element and add it to info div
+            const title = getTitle(response)
+            incidentInfo.append(title)
+            const description = getDescription(response)
+            incidentInfo.append(description)
+      
+            //add incident info div to page
+            infoHolder.append(incidentInfo)
+            createMarker(response)
+            //call coords function - hopefull to use for mapping function
+            coords = getCoords(response)
+          }
+          
+        })
+  
+    }
+
+const incidentCategories = ["crash", "hazard", "theft", "unconfirmed", "infrastructure_issue",   "chop_shop"]
+getIncidentInfo("Atlanta", 10)
+
+
+
+
+
+
+
+
+
 
 /************************************ Mulk's Code  ****************************************************************************************************/
 
