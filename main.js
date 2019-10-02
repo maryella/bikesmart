@@ -16,23 +16,30 @@ formButton.addEventListener("click", function(event){
     event.preventDefault();
     const inputLocation = inputForm.querySelector("#location").value;
     const inputRadius = inputForm.querySelector("#radius").value;
-    getIncidentInfo(inputLocation, inputRadius);
+    const incidentType = inputForm.querySelector("select").value
+    getIncidentInfo(inputLocation, inputRadius, incidentType);
 })
 
 //Make category drop down - not in use yet
-// function addIncidentCategoryDropDown(categoryArray){
-//   const categoryList = document.createElement("select");
-//   const selectWrapper = document.querySelector("#selectWrapper")
-  
-//   categoryArray.forEach(function(item){
-//     const categoryOption = document.createElement("option")
-//     categoryOption.text = item;
-//     categoryOption.value = item;
-//     categoryList.append(categoryOption)
-//   })
-//   selectWrapper.append(categoryList)
-// }
-// const incidentCategories = ["crash", "hazard", "theft", "unconfirmed", "infrastructure_issue",   "chop_shop"]
+function addIncidentCategoryDropDown(categoryArray){
+  const categoryList = document.createElement("select");
+  const selectWrapper = document.querySelector("#selectWrapper")
+  categoryArray.forEach(function(item){
+    const categoryOption = document.createElement("option")
+    categoryOption.text = item;
+    if (item == "all"){
+      categoryOption.value = "";
+    }
+    else {
+      categoryOption.value = `incident_type=${item}`;
+    }
+    
+    categoryList.append(categoryOption)
+  })
+  selectWrapper.append(categoryList)
+}
+const incidentCategories = ["all", "crash", "hazard", "theft", "unconfirmed", "infrastructure_issue",   "chop_shop"]
+addIncidentCategoryDropDown(incidentCategories)
 
 //function to get different element for each incident
 function getTitle(response){
@@ -130,9 +137,9 @@ function handleLocationError(browserHasGeolocation, infoWindow, pos) {
   infoWindow.open(map);
 }
 
-function getIncidentInfo(location, radius){ //may add incident type later
+function getIncidentInfo(location, radius, type){ //may add incident type later
     infoHolder.innerHTML = ""
-    get(`https://bikewise.org:443/api/v2/locations/markers?proximity=${location}&proximity_square=${radius}&all=false`)
+    get(`https://bikewise.org:443/api/v2/locations/markers?${type}&proximity=${location}&proximity_square=${radius}&all=false`)
         .then(function(response){
         //for loop to iterate through the items
           for (i = 0; i < response.features.length; i++) {
