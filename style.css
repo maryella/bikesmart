@@ -4,7 +4,16 @@
     border: 2px solid black;
 }
 
+.description img {
+    width: 100px;
+
+}
+
 img.photo {
     width: 100px;
 
 }
+
+#map {
+    height: 50%;
+  }
