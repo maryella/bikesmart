@@ -5,7 +5,19 @@
     <meta name="viewport" content="width=device-width">
     <title>City Data</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="index.css">
 </head>
+<style>
+    #map {
+    height: 100%;
+  }
+  /* Optional: Makes the sample page fill the window. */
+  html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+  }
+</style>
 <body>
     <div class="wrapper">
         <h1 class="title">Bikes!</h1>
@@ -19,9 +31,13 @@
         <div id="infoHolder" class="">&nbsp;</div>
   
     </div>
+    <div id="map"></div>
 
 
 <script src="main.js"></script>
+<script async defer
+src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBREVCOViKWGOFGpr_QDTIVFML5EKkRQBU&callback=initMap">
+</script>
 </main>
 </body>
 </html>
