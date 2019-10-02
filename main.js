@@ -26,7 +26,7 @@ function updateCity(cityName){
     })
 }
 
-/*** The  MaryEll Code */
+/*** The  MaryEll Code *
 
 function getCategories(){
     const categoryList = document.createElement("select");
