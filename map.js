@@ -2,6 +2,8 @@
 var map;
 
 function createMarker(response){
+    var bikeLayer = new google.maps.BicyclingLayer();
+    bikeLayer.setMap(map);
     let marker;
     coords = response.features[i]['geometry']['coordinates'];
     marker = new google.maps.Marker({
@@ -9,24 +11,31 @@ function createMarker(response){
         map: map,
         icon: 'img/bikego.svg'
     });
-    var bikeLayer = new google.maps.BicyclingLayer();
-    bikeLayer.setMap(map);
     marker.setMap(map);
   }
-  if (navigator.geolocation) {
-    navigator.geolocation.getCurrentPosition(function (position) {
-        initialLocation = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
-        map.setCenter(initialLocation);
-    });
-  }
+  // if (navigator.geolocation) {
+  //   navigator.geolocation.getCurrentPosition(function (position) {
+  //       initialLocation = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
+  //       map.setCenter(initialLocation);
+  //   });
+  // }
+
+function updateMap(response){	
+    let latlngbounds = new google.maps.LatLngBounds();	
+    let coords = response.features[i]['geometry']['coordinates'];	
+    position = new google.maps.LatLng(coords[1], coords[0])	
+    latlngbounds.extend(position);	
+    map.setCenter(latlngbounds.getCenter());	
+    //map.fitBounds(latlngbounds);	
+    }
   
   function initMap() {
     var myLatLng = {lat:  33.7490, lng:-84.3880 };
      map = new google.maps.Map(document.getElementById('map'), {
-            zoom: 15,
+            zoom: 10,
             center: myLatLng,
     });
-    infoWindow = new google.maps.InfoWindow;
+    let infoWindow = new google.maps.InfoWindow;
     if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition(function(position) {
         var pos = {
@@ -35,8 +44,14 @@ function createMarker(response){
         };
   
         infoWindow.setPosition(pos);
-        infoWindow.setContent('Location found.');
+        infoWindow.setContent('Your location.');
         infoWindow.open(map);
+        userMarker = new google.maps.Marker({	
+                  position: new google.maps.LatLng(pos),	
+                  map: map,	
+                  icon: {path: google.maps.SymbolPath.CIRCLE,	
+                  scale: 3}
+                  })
         map.setCenter(pos);
       }, function() {
         handleLocationError(true, infoWindow, map.getCenter());

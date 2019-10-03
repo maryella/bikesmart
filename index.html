@@ -17,16 +17,17 @@
    </head>
    <body>
     <header>
-         <div class="nav-container contanier">
+         <div class="nav-container container">
             <h1 class="logo"><span><img src="img/bicycle.svg" width="50px" ></span><span class="logo_text">bikeroute</span></h1>
              <div class="Freepik">Icons made by <a href="https://www.flaticon.com/authors/freepik" title="Freepik">Freepik</a> from <a href="https://www.flaticon.com/"   title="Flaticon">www.flaticon.com</a></div>
             <nav class="site-nav">
-                  <form class="searchbox">
-                        <input type="text" name="City" value="City" class="search">
-                        <input type="text" name="ZipCode" value="ZipCode" class="search">
-                        <input class="navsearch" type="submit" value="Submit">
+               <form action="#" id="inputForm" class="searchbox">
+                     <input type="text" id="location" onfocus="this.value=''" value="Location" class="search">
+                     <input type="text" id="radius" onfocus="this.value=''" value="Search Radius (miles)" class="search">
+                     <div id="selectWrapper" class="field-wrapper"></div>
+                     <button type="submit" id="formButton" class="navsearch">search</button>
+               </form>
 
-                  </form>
                <div class="topnav-right">
                  ABOUT US
                </div>
@@ -36,30 +37,11 @@
             </div>
          </div>
     </header>
-
-    <section  class="InfoSideBar">
-
-    </section>
-
-
- 
-        
-      </section>-
-    
-      <section>
-           
-      <div class="wrapper">
-         <h1 class="title"></h1>
-            <div class="hero"></div>
-        <form action="#" id="inputForm" class="form">
-            <div id="selectWrapper" class="field-wrapper"></div>
-          <button type="submit" id="formButton" class="button is-primary is-medium is-outlined">Go!</button>
-        </form>
+         
+         <div class="wrapper">
             <div id="infoHolder" class="">&nbsp;</div>
-
-        </div>
-      </section>
-      
+         </div>
+            
         <div id="map"></div> 
       
           
