@@ -1,4 +1,4 @@
-
+//get function for calling API
 function get(url){
     return fetch(url)
         .then(function(response){
@@ -9,10 +9,12 @@ function get(url){
           })
 }
 
+//link to HTML
 const inputForm = document.querySelector("#inputForm")
 const formButton = inputForm.querySelector("#formButton")
 const infoHolder = document.querySelector("#infoHolder")
 
+//form event listener
 formButton.addEventListener("click", function(event){
     event.preventDefault();
     const inputLocation = inputForm.querySelector("#location").value;
@@ -21,7 +23,7 @@ formButton.addEventListener("click", function(event){
     getIncidentInfo(inputLocation, inputRadius, incidentType);
 })
 
-//Make category drop down
+//Make category drop down: function & call function
 function addIncidentCategoryDropDown(categoryArray){
   const categoryList = document.createElement("select");
   const selectWrapper = document.querySelector("#selectWrapper")
@@ -42,7 +44,7 @@ function addIncidentCategoryDropDown(categoryArray){
 const incidentCategories = ["all", "crash", "hazard", "theft", "unconfirmed", "infrastructure_issue",   "chop_shop"]
 addIncidentCategoryDropDown(incidentCategories)
 
-//function to get different element for each incident
+//functions to get different element for each incident
 function getTitle(response){
   const title = document.createElement("h4")
   const linebar = document.createElement("hr")
@@ -90,7 +92,6 @@ function getIncidentInfo(location, radius, type){
           for (i = 0; i < response.features.length; i++) {
             //create div to hold info for each incident
             const incidentInfo = document.createElement("div")
-
             //create each element and add it to info div
             const title = getTitle(response)
             incidentInfo.append(title)
@@ -100,7 +101,6 @@ function getIncidentInfo(location, radius, type){
               if (image != undefined) {
                 incidentInfo.append(image)
               }
-            
             //add incident info div to page
             infoHolder.append(incidentInfo)
             //add marker to map
@@ -112,7 +112,6 @@ function getIncidentInfo(location, radius, type){
   
     }
 
-getIncidentInfo(Atlanta, 10)
 
 
 
