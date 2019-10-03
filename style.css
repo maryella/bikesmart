@@ -1,5 +1,4 @@
 
-
 .title {
     border: 2px solid black;
 }
@@ -9,6 +8,14 @@
 
 }
 
+img.photo {
+    width: 100px;
+
+}
+
+#map {
+    height: 50%;
+  }
 #map {
     height: 100%;
   }
