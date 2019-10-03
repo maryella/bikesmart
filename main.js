@@ -90,17 +90,6 @@ const incidentCategories = ["crash", "hazard", "theft", "unconfirmed", "infrastr
 getIncidentInfo("Atlanta", 10)
 
 
-
-
-
-
-
-
-
-
-/************************************ Mulk's Code  ****************************************************************************************************/
-
-
 //create IMMEDIATELY INVOKED FUNCTION EXPRESSION (IIFE)
 // (function(){
     

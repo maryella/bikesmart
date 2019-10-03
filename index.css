@@ -255,7 +255,7 @@ body {
  
  
 /** InfoSideBar**/
-.InfoSideBar{
+#infoHolder{
     position: fixed;
     right: 0;
     width: 300px;
@@ -263,6 +263,7 @@ body {
     top: 90px;
     padding-inline-start: 25px;
     background-color: #fcea00;
+    overflow-y: scroll;
 }
  
  
