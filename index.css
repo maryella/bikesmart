@@ -1,35 +1,46 @@
+@import url('https://fonts.googleapis.com/css?family=Montserrat:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,500i,700,700i,900&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Big+Shoulders+Text&display=swap');
 html {
     box-sizing: border-box;
     font-size: 16px;
+    
 }
-
 *, *:before, *:after {
     box-sizing: inherit;
 }
-
-body {
-    font-family: Arial;
+html, body {
+    height: 100%;
     margin: 0;
     padding: 0;
+  }
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Roboto', sans-serif;
    
 }
-
-
+#map {
+    height: 100%;
+    margin-right: 350px;
+  }
+/** This need be changes **/
+.wrapper{
+    
+}
 .header{
     display: block;
     margin-right:auto;
     margin-left:auto;
     padding: 10px;
     width: 100%;
-    background-color:darkgrey;
-
+    
 }
 .header h1{
     font-size: 2rem;
     color: black;
     text-align: center;
 }
-
 #board {
     display: flex;
     flex-wrap: wrap-reverse;
@@ -39,30 +50,295 @@ body {
     width: 80%;
     margin-left: auto;
     margin-right: auto;
-
 }
-
 .card {
     max-width: 300px;
     margin: 5px;
     padding: 10px;
     background-color:white;
 }
-
 .card img {
     width: 100%;
 }
-
 .card p {
     font-size: 1rem;
     text-align: center;
     background-color: white;
 }
-
 .center {
     text-align: center;
 }
-
 /** Map CSS ***/
-
 /** Map CSS ***/
+ *{
+     margin: 0;
+     padding: 0;
+     box-sizing: border-box;
+}
+ body{
+     overflow-x: hidden;
+     font-size: 16px;
+     line-height: 1.5;
+     font-family: Lato;
+}
+.img-fluid {
+  max-width: 100%;
+  display: block;
+  height: auto;
+}
+ .nav-container {
+     width: 100%;
+     max-width: 95%;
+     margin: 0 auto;
+}
+ header {
+     padding: 1em 0;
+     position: relative;
+     width: 100%;
+}
+ header::after {
+     content: '';
+     clear: both;
+     display: block;
+}
+ .logo {
+     float: left;
+     font-size: 1rem;
+     margin: 0;
+     text-transform: uppercase;
+     font-weight: 700;
+     display: inline-flex;
+    align-items: center;
+}
+ .logo span {
+    font-family: 'Big Shoulders Text', cursive;
+     font-style: normal;
+     font-weight: 900;
+     line-height: normal;
+     font-size: 2.5rem;
+     letter-spacing: 0.07em;
+     color: #000000;
+}
+.Freepik{
+    display: none;
+}
+ .site-nav {
+     position: absolute;
+     top: 100%;
+     right: 0%;
+     font-family: 'Lato', sans-serif;
+     font-weight: 500;
+     height: 0px;
+     overflow: hidden;
+     background-color: white;
+}
+ .site-nav--open {
+     height: auto;
+}
+ .site-nav div {
+     margin: 0;
+     padding: 0;
+     list-style: none;
+}
+ .site-nav div {
+     border-bottom: 1px solid #575766;
+}
+ .site-nav div:last-child {
+     border-bottom: none;
+}
+ .site-nav a {
+     color: black;
+     display: block;
+     padding: 2em 4em 2em 1.5em;
+     text-transform: uppercase;
+     text-decoration: none;
+}
+ .site-nav a:hover, .site-nav a:focus {
+     background: #E4B363;
+}
+ .menu-toggle {
+     padding: 1em;
+     position: absolute;
+     top: .5em;
+     right: .5em;
+     cursor: pointer;
+     background-color: white;
+}
+ .hamburger, .hamburger::before, .hamburger::after {
+     content: '';
+     display: block;
+     background: #EBEBD3;
+     height: 3px;
+     width: 1.75em;
+     border-radius: 3px;
+     transition: all ease-in-out 500ms;
+}
+ .hamburger::before {
+     transform: translateY(-6px);
+}
+ .hamburger::after {
+     transform: translateY(3px);
+}
+ .open .hamburger {
+     transform: rotate(45deg);
+}
+ .open .hamburger::before {
+     opacity: 0;
+}
+ .open .hamburger::after {
+     transform: translateY(-3px) rotate(-90deg);
+}
+ 
+/**** Image Header ****/
+ section.masthead {
+     background: url(img/biketwo.jpg) no-repeat center center;
+     background-size: cover;
+     padding-top: 7rem;
+     padding-bottom: 7rem;
+}
+/*** Header Text ***/
+ header{
+     
+     background-color: #f1f1f18a;
+ }
+ .logo_text{
+    background-color: #fcea00;
+ }
+ .site-nav input[type=text] {
+     padding: 6px;
+     margin-top: 8px;
+     font-size: 25px;
+     border: none;
+ }
+ .search {
+    width: 35%;
+    padding: 10px;
+    height: 35px;
+}
+.searchbox {
+    display: flex;
+    justify-content:center;
+}
+.navsearch {
+    padding: 6px;
+    margin-top: 8px;
+    margin-right: 16px;
+    background: #ddd;
+    font-size: 17px;
+    border: none;
+    cursor: pointer;
+}
+ .black-box-tagline{
+     margin-top: 1rem;
+     margin-left: auto;
+     margin-right: auto;
+     width: fit-content;
+     font-size:  2.5rem;
+     font-weight: 700;
+     font-family: 'Roboto', sans-serif;
+     text-shadow: 0 2px 7px rgba(0,0,0,.6);
+     font-weight: 500;
+     color: white;
+     flex-wrap: wrap;
+}
+.tagline_second{
+    color: white; 
+    text-align: center;
+    font-weight: 500;
+    font-size: 1.5rem;
+   
+}
+/***** Local Bike Shopes ***/
+.localShops_title{
+    font-weight: 500;
+    font-size: 2rem;
+}
+ 
+ 
+/** InfoSideBar**/
+#infoHolder{
+    position: fixed;
+    right: 0;
+    width: 350px;
+    height: 100%;
+    top: 90px;
+    padding-inline-start: 25px;
+    background-color: #fcea00;
+    overflow-y: scroll;
+}
+ 
+h4 {
+    font-family: 'Roboto', sans-serif;
+    margin-top: 15px;
+    text-transform: capitalize;
+}
+ hr {
+    width: 100%;
+    height: 2.5px;
+    background-color: black;
+    margin-bottom: 10px;
+    border: none;
+ }
+p {
+font-family: 'Roboto', sans-serif;
+    font-size: .9rem;
+    line-height: .95rem;
+}
+
+#infoHolder img {
+    width: 100%;
+    height: 200px;
+}
+/** Locations**/
+/***Media Query ***/
+@media (min-width: 1200px) { 
+  
+ }
+@media (min-width: 992px) {
+  .black-box-logo{
+      font-size: 8rem;
+ }
+  .seller_img-top{
+      left: 350px;
+ }
+ 
+ 
+}
+@media (min-width: 768px){
+  
+}
+@media (min-width: 1000px) {
+  
+  .menu-toggle {
+      display: none;
+ }
+  .site-nav {
+      height: auto;
+      position: relative;
+      background: transparent;
+      clip-path: initial;
+ }
+  .site-nav div {
+      display: inline-block;
+      border: none;
+ }
+  .site-nav a {
+      padding: 0;
+      padding-top: .85em;
+      margin-left: 3em;
+ }
+  .site-nav a:hover, .site-nav a:focus {
+      background: transparent;
+ }
+  .site-nav--icon {
+      display: none;
+ }
+  .topnav-left{
+      float: left;
+ }
+  .topnav-right{
+      float: right;
+ }
+  
+ 
+}
