@@ -5,8 +5,11 @@ function createMarker(response){
     coords = response.features[i]['geometry']['coordinates'];
     marker = new google.maps.Marker({
         position: new google.maps.LatLng(coords[1], coords[0]),
-        map: map
+        map: map,
+        icon: 'img/bikego.svg'
     });
+    var bikeLayer = new google.maps.BicyclingLayer();
+    bikeLayer.setMap(map);
     marker.setMap(map);
   }
   if (navigator.geolocation) {

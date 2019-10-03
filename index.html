@@ -16,42 +16,37 @@
       
    </head>
    <body>
-       <style>
-            #map {
-        height: 100%;
-      }
-      /* Optional: Makes the sample page fill the window. */
-      html, body {
-        height: 100%;
-        margin: 0;
-        padding: 0;
-      }
-        </style>
-      <header>
+    <header>
          <div class="nav-container contanier">
-            <h1 class="logo"><span><img src="img/bicycle.svg" width="50px" ></span><span>bikeroute</span></h1>
+            <h1 class="logo"><span><img src="img/bicycle.svg" width="50px" ></span><span class="logo_text">bikeroute</span></h1>
              <div class="Freepik">Icons made by <a href="https://www.flaticon.com/authors/freepik" title="Freepik">Freepik</a> from <a href="https://www.flaticon.com/"   title="Flaticon">www.flaticon.com</a></div>
             <nav class="site-nav">
-               <div class="topnav-left">
-                 
-               </div>
+                  <form class="searchbox">
+                        <input type="text" name="City" value="City" class="search">
+                        <input type="text" name="ZipCode" value="ZipCode" class="search">
+                        <input type="submit" value="Submit">
+                  </form>
                <div class="topnav-right">
-                 
+                 ABOUT US
                </div>
             </nav>
             <div class="menu-toggle">
                <div class="hamburger"></div>
             </div>
          </div>
-      </header>
-      <section class="masthead header-image container-fluid  ">
+    </header>
+    <section  class="InfoSideBar">
+
+    </section>
+
+ <!---  <section class="masthead header-image container-fluid  ">
 
                <div class="black-box-tagline"><span class="tagline"> Find your perfect route</span></div>
                <div class="tagline_second"><p>We help you find the safest way to get to your destination<br/> and help you find stolen or lost bikes</p></div>
             
          
-      </section>
-      <section class="container-fluid localShops">
+      </section>-->
+      <!--<section class="container-fluid localShops">
          <div class="row">
             <div class="col-sm-12 col-md-12 col-lg-12 mx-auto">
                <h4 class="localShops_title">Awesome Bike Shops</h4>
@@ -63,7 +58,7 @@
             <div class="col-md-4"><img class="img-fluid" src="img/bikeshop1.jpg"></div>
         </div>
         
-      </section>
+      </section>-->
     
       <section>
            
@@ -77,10 +72,10 @@
             <div id="infoHolder" class="">&nbsp;</div>
         </div>
       </section>
-      <div id="map"></div>
-    
-     
-    
+      
+        <div id="map"></div> 
+      
+          
    </body>
   
    <script src="main.js"></script>
