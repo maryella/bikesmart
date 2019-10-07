@@ -9,10 +9,22 @@ function createMarker(response){
     marker = new google.maps.Marker({
         position: new google.maps.LatLng(coords[1], coords[0]),
         map: map,
-        icon: 'img/bikego.svg'
+        icon: 'img/flags.png'
     });
     marker.setMap(map);
+    //<a name="linktotop">Back To Top</a>
+
+     const infoText = response.features[i]['properties']['title']
+     let popUpInfo = new google.maps.InfoWindow({
+     content: infoText
+     });
+    marker.addListener('click', function() {
+    popUpInfo.open(map, marker);
+   })
   }
+
+  
+  
   // if (navigator.geolocation) {
   //   navigator.geolocation.getCurrentPosition(function (position) {
   //       initialLocation = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);

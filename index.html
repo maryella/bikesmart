@@ -13,40 +13,32 @@
       <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css"
          integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
         <link href="https://fonts.googleapis.com/css?family=Roboto:100,300i,400,400i,500,500i,700,900&display=swap" rel="stylesheet">
-
    </head>
    <body>
     <header>
-         <div class="nav-container container">
-            <h1 class="logo"><span><img src="img/bicycle.svg" width="50px" ></span><span class="logo_text">bikeroute</span></h1>
+      <div class="nav-container container-fluid">
+            <h1 class="logo"><span><img class="bikeimg" src="img/bicycle.svg"></span><span class="logo_text">bikesmart</span></h1>
              <div class="Freepik">Icons made by <a href="https://www.flaticon.com/authors/freepik" title="Freepik">Freepik</a> from <a href="https://www.flaticon.com/"   title="Flaticon">www.flaticon.com</a></div>
             <nav class="site-nav">
                <form action="#" id="inputForm" class="searchbox">
-                     <input type="text" id="location" onfocus="this.value=''" value="Location" class="search">
-                     <input type="text" id="radius" onfocus="this.value=''" value="Search Radius (miles)" class="search">
+                     <input  class="search" type="text" id="location" onfocus="this.value=''" value="Location" >
+                     <input  class="search" type="text" id="radius" onfocus="this.value=''" value="Radius(mi)" >
                      <div id="selectWrapper" class="field-wrapper"></div>
-                     <button type="submit" id="formButton" class="navsearch">search</button>
+                     <button  class="navsearch " type="submit" id="formButton" ><i class="fa fa-search searchIcon"></i></button>
+                     <div class="menu-toggle">
+                           <button type="button"  id="navSideBarButton" >INFO</button>
+                     </div> 
                </form>
-
-               <div class="topnav-right">
-                 ABOUT US
-               </div>
             </nav>
-            <div class="menu-toggle">
-               <div class="hamburger"></div>
-            </div>
-         </div>
+        
+      </div>
     </header>
-         
          <div class="wrapper">
-            <div id="infoHolder" class="">&nbsp;</div>
-         </div>
-            
-        <div id="map"></div> 
-      
-          
+            <div class="infoHolder" id="infoButton" ></div>
+      </div>  
+   <div id="map"></div>  
    </body>
-  
+   <script src="nav.js"></script>
    <script src="main.js"></script>
    <script src="map.js"></script>
    <script async defer

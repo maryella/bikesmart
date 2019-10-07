@@ -11,7 +11,7 @@ function get(url){
 
 const inputForm = document.querySelector("#inputForm")
 const formButton = inputForm.querySelector("#formButton")
-const infoHolder = document.querySelector("#infoHolder")
+const infoHolder = document.querySelector(".infoHolder")
 
 formButton.addEventListener("click", function(event){
     event.preventDefault();
@@ -44,13 +44,16 @@ addIncidentCategoryDropDown(incidentCategories)
 
 //function to get different element for each incident
 function getTitle(response){
-  const title = document.createElement("h4")
+  //const title = document.createElement("h4")
   const linebar = document.createElement("hr")
   const titleInfo = response.features[i]['properties']['title']
-  title.innerText = titleInfo
-  title.append(linebar)
-  title.setAttribute("class", "title")
-  return title
+ // title.innerText = titleInfo
+  const aTag = document.createElement("a");
+  aTag.setAttribute('href',`${titleInfo}.html`);
+  aTag.innerText = `${titleInfo}`;
+  aTag.append(linebar)
+  aTag.setAttribute("class", "title")
+  return aTag;
 }
 
 function getDescription(response){
