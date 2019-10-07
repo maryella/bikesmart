@@ -44,16 +44,14 @@ addIncidentCategoryDropDown(incidentCategories)
 
 //function to get different element for each incident
 function getTitle(response){
-  //const title = document.createElement("h4")
+  const title = document.createElement("h4")
   const linebar = document.createElement("hr")
   const titleInfo = response.features[i]['properties']['title']
- // title.innerText = titleInfo
-  const aTag = document.createElement("a");
-  aTag.setAttribute('href',`${titleInfo}.html`);
-  aTag.innerText = `${titleInfo}`;
-  aTag.append(linebar)
-  aTag.setAttribute("class", "title")
-  return aTag;
+  title.innerText = titleInfo
+  title.append(linebar)
+  title.setAttribute("class", "title")
+  title.setAttribute("id", titleInfo);
+  return title
 }
 
 function getDescription(response){

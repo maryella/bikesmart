@@ -13,14 +13,15 @@ function createMarker(response){
     });
     marker.setMap(map);
     //<a name="linktotop">Back To Top</a>
-
-     const infoText = response.features[i]['properties']['title']
-     let popUpInfo = new google.maps.InfoWindow({
-     content: infoText
-     });
+    const titleInfo = response.features[i]['properties']['title']
+    const shortTitle = titleInfo.substr(0, 15) + "...";
+    const titleLink = `<a href='#${titleInfo}'>${shortTitle}</a>`
+    let popUpInfo = new google.maps.InfoWindow({
+        content: titleLink
+    });
     marker.addListener('click', function() {
-    popUpInfo.open(map, marker);
-   })
+        popUpInfo.open(map, marker);
+    })
   }
 
   
