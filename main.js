@@ -114,23 +114,9 @@ function getIncidentInfo(location, radius, type) {
 }
 
 
-getIncidentInfo("Atlanta", "10", "all")
 
 
 
 
 
 
-
-
-
-
-
-
-/************************************ Mulk's Code  ****************************************************************************************************/
-
-
-//create IMMEDIATELY INVOKED FUNCTION EXPRESSION (IIFE)
-// (function(){
-
-// })()
