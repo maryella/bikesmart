@@ -12,7 +12,7 @@ function get(url) {
 //link to HTML
 const inputForm = document.querySelector("#inputForm")
 const formButton = inputForm.querySelector("#formButton")
-const infoHolder = document.querySelector("#infoHolder")
+const infoHolder = document.querySelector(".infoHolder")
 
 //form event listener
 formButton.addEventListener("click", function(event) {

@@ -8,7 +8,7 @@ function createMarker(response) {
     marker = new google.maps.Marker({
         position: new google.maps.LatLng(coords[1], coords[0]),
         map: map,
-        icon: 'img/bikego.svg'
+        icon: 'img/flags.png'
     });
     marker.setMap(map);
 
