@@ -2,6 +2,7 @@
 ### An app to visualize local bike safety issues
 
 ![Screenshot of Project](https://maryella.dev/images/screenshot_bikesmart.png)
+[Live Demo](https://maryella-bikesmart.netlify.com/)
 
 JavaScript | HTML | Google Map API
 
